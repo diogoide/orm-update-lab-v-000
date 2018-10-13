@@ -44,14 +44,13 @@ class Student
      end
    end
 
-   def self.create
      def self.create(row)
       new_student = self.new
       new_student.id = row[0]
       new_student.name = row[1]
       new_student.grade = row[2]
-      new_student 
+      new_student
     end
 
-  
+
 end

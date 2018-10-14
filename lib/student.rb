@@ -70,11 +70,12 @@ class Student
     end
 
     def update
-      sql = <<-SQL 
+      sql = <<-SQL
         UPDATE students SET name = ?, grade = ?, id = ?
       SQL
 
-       
-    end 
+      DB[:conn].execute(sql, self.name, self.grade, self.id)
+    end
+
 
 end

@@ -58,13 +58,15 @@ class Student
 
     def find_by_name(name)
       sql = <<-SQL
-        SELECT * 
-        FROM students 
+        SELECT *
+        FROM students
         WHERE name = ?
-        LIMIT 1 
-      SQL 
+        LIMIT 1
+      SQL
 
-      
-    end 
+      DB[:conn].execute(sql, name).map do |row|
+        self.new_from_db(row)
+      end.first 
+    end
 
 end
